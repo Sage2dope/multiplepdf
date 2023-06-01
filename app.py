@@ -10,10 +10,16 @@ from htmlTemplates import css, bot_template, user_template
 from langchain.llms import HuggingFaceHub
 from faq import faq
 import tiktoken
+import docx2txt
 
 
 
-
+def get_docs_text(docs_text):
+    # sourcery skip: inline-immediately-returned-variable, use-join
+    text = ""
+    for doc in docs_text:
+        text += docx2txt.process(doc)
+    return text
 
 
 
