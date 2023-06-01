@@ -9,6 +9,8 @@ from langchain.chains import ConversationalRetrievalChain
 from htmlTemplates import css, bot_template, user_template
 from langchain.llms import HuggingFaceHub
 from faq import faq
+import tiktoken
+
 
 
 
@@ -128,6 +130,16 @@ def main():  # sourcery skip: extract-method, use-named-expression
         )
 
         faq()
+
+
+
+
+def num_tokens_from_string(string: str, encoding_name: str) -> int:
+    """Returns the number of tokens in a text string."""
+    encoding = tiktoken.get_encoding(encoding_name)
+    return len(encoding.encode(string))
+
+num_tokens_from_string("tiktoken is great!", "cl100k_base")
 
 
 if __name__ == '__main__':
