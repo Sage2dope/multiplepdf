@@ -14,12 +14,7 @@ import docx2txt
 
 
 
-def get_docs_text(docx_docs):
-    # sourcery skip: inline-immediately-returned-variable, use-join
-    text = ""
-    for docx_file in docx_docs:
-        text += docx2txt.process(docx_file)
-    return text
+
 
 
 
@@ -92,36 +87,24 @@ def main():  # sourcery skip: extract-method, use-named-expression
 
     st.header("PDF GURU :books:")
 
-    pdf_docss = st.file_uploader(
-            "Upload your PDFs,Docx here and click on 'Process'", accept_multiple_files=True)
+    pdf_docs = st.file_uploader(
+            "Upload your PDFs here and click on 'Process'", accept_multiple_files=True)
     if st.button("Process"):
-        with st.spinner("Processing"):
-
-            if pdf_docss:
+            with st.spinner("Processing"):
                 # get pdf text
-                raw_text = get_pdf_text(pdf_docss)
+                raw_text = get_pdf_text(pdf_docs)
 
-                # get docx text
-            
-                docx_docs = [file for file in pdf_docss if file.name.endswith(".docx")]
+                # get the text chunks
+                text_chunks = get_text_chunks(raw_text)
 
-                if docx_docs:
-                    text = get_docs_text(docx_docs)
-                    st.text_area("Extracted Text", value=text)
-                else:
-                    st.warning("No .docx files uploaded.")
+                # create vector store
+                vectorstore = get_vectorstore(text_chunks)
 
-            # get the text chunks
-            text_chunks = get_text_chunks(raw_text, text)
+                # create conversation chain
+                st.session_state.conversation = get_conversation_chain(
+                    vectorstore)
 
-            # create vector store
-            vectorstore = get_vectorstore(text_chunks)
-
-            # create conversation chain
-            st.session_state.conversation = get_conversation_chain(
-                vectorstore)
-
-
+    
     user_question = st.text_input("Ask any questions about your documents:")
     if user_question:
         handle_userinput(user_question)
@@ -132,7 +115,7 @@ def main():  # sourcery skip: extract-method, use-named-expression
             " 1. Upload a pdf file📄\n"
             "2. Ask a question about the document💬\n"
             "3. Get instant answers about your document\n")
-
+        
 
         #Sidebar Construction
         st.sidebar.markdown('______')
