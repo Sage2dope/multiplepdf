@@ -14,11 +14,11 @@ import docx2txt
 
 
 
-def get_docs_text(docs_text):
+def get_docs_text(docx_docs):
     # sourcery skip: inline-immediately-returned-variable, use-join
     text = ""
-    for doc in docs_text:
-        text += docx2txt.process(doc)
+    for docx_file in docx_docs:
+        text += docx2txt.process(docx_file)
     return text
 
 
@@ -92,15 +92,18 @@ def main():  # sourcery skip: extract-method, use-named-expression
 
     st.header("PDF GURU :books:")
 
-    pdf_docs = st.file_uploader(
+    pdf_docs, docx_docs = st.file_uploader(
             "Upload your PDFs here and click on 'Process'", accept_multiple_files=True)
     if st.button("Process"):
             with st.spinner("Processing"):
                 # get pdf text
                 raw_text = get_pdf_text(pdf_docs)
+    
+                # get docx text
+                raw_docs = get_docs_text(docx_docs)
 
                 # get the text chunks
-                text_chunks = get_text_chunks(raw_text)
+                text_chunks = get_text_chunks(raw_text, raw_docs)
 
                 # create vector store
                 vectorstore = get_vectorstore(text_chunks)
