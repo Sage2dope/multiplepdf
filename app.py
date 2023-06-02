@@ -150,13 +150,13 @@ def main():  # sourcery skip: extract-method, use-named-expression
 
     
     #Handling User Input 
-    with st.form(key='user_input_form'):
-       user_question = st.text_input("Ask any questions about your documents:" , key="user_input")
-       submit_button = st.form_submit_button('Submit')
-       
+    user_question = st.text_input('Ask any questions about your documents:')
+    submit_button = st.button('Submit')
+
     if submit_button:
         handle_userinput(user_question)
-        st.text_input("Ask any questions about your documents:", key="user_input", value="")
+        user_question_placeholder = st.empty()
+        user_question_placeholder.write("")
 
 
     with st.sidebar:
