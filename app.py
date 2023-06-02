@@ -46,9 +46,14 @@ def get_text_chunks(text):  # sourcery skip: inline-immediately-returned-variabl
 def get_vectorstore(text_chunks):
     # sourcery skip: inline-immediately-returned-variable
     embeddings = OpenAIEmbeddings()
-    # embeddings = HuggingFaceInstructEmbeddings(model_name="hkunlp/instructor-xl")
-    vectorstore = FAISS.from_texts(texts=text_chunks, embedding=embeddings)
-    return vectorstore
+
+    try:
+        # embeddings = HuggingFaceInstructEmbeddings(model_name="hkunlp/instructor-xl")
+        vectorstore = FAISS.from_texts(texts=text_chunks, embedding=embeddings)
+        return vectorstore
+    except Exception as e:
+        st.error(f"Error processing document: {str(e)}")
+        return None
 
 
 def get_conversation_chain(vectorstore):
@@ -101,6 +106,8 @@ def main():  # sourcery skip: extract-method, use-named-expression
           with st.spinner('Processing'):
                 raw_pdf_text = ""
                 raw_docx_text = ""
+                unsupported_files = []
+
 
                 for uploaded_file in uploaded_files:
                     if uploaded_file.type == 'application/pdf':
@@ -111,20 +118,35 @@ def main():  # sourcery skip: extract-method, use-named-expression
                         #Process docx files 
                         docx_text = get_docx_text([uploaded_file])
                         raw_docx_text += docx_text
+                    else:
+                        #Unsupported file type 
+                        unsupported_files.append(uploaded_file.name)
 
                 #Combine text from pdf and docx. files 
                 raw_text = raw_pdf_text + raw_docx_text
+
+                if unsupported_files:
+                    unsupported_files_str = ", ".join(unsupported_files)
+                    st.error(
+                        f"Sorry, the following file(s) cannot be processed: {unsupported_files_str}. Please upload another file."
+                    )
+                else:
+
                         
                             
-                # get the text chunks
-                text_chunks = get_text_chunks(raw_text)
+                    # get the text chunks
+                    text_chunks = get_text_chunks(raw_text)
 
-                # create vector store
-                vectorstore = get_vectorstore(text_chunks)
+                    # create vector store
+                    vectorstore = get_vectorstore(text_chunks)
 
-                # create conversation chain
-                st.session_state.conversation = get_conversation_chain(
-                    vectorstore)
+                    if vectorstore is None:
+                        #Error occured during processing 
+                        return
+                    else:
+                        # create conversation chain
+                        st.session_state.conversation = get_conversation_chain(
+                            vectorstore)
 
     
     user_question = st.text_input("Ask any questions about your documents:")
