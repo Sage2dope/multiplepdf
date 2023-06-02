@@ -156,19 +156,12 @@ def main():  # sourcery skip: extract-method, use-named-expression
         submit_button = st.form_submit_button("Submit")
 
         if submit_button:
-            if not user_question:
-                st.error('You have not entered a question. Please enter a question.')
-            else:
-                handle_userinput(user_question)
-                user_question_placeholder.text_input("Ask any questions about your documents:", value="", key="clear_input")
+          if not user_question:
+            st.error('You have not entered a question. Please enter a question.')
+          else:
+             handle_userinput(user_question)
+             user_question_placeholder.text_input("Ask any questions about your documents:", value="", key="clear_input")
         
-    if st.session_state.get("form_submit_button", False):
-        if not user_question:
-            st.error("You have not entered a question. Please enter a question.")
-        else:
-            handle_userinput(user_question)
-            user_question_placeholder.text_input("Ask any questions about your documents:", value="", key="clear_input")
-            st.session_state["form_submit_button"] = False
 
     #Sidebar structure
     with st.sidebar:
