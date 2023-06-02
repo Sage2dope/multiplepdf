@@ -150,16 +150,16 @@ def main():  # sourcery skip: extract-method, use-named-expression
 
     
     #Handling User Input 
-    user_question = st.text_input("Ask any questions about your documents:")
-    submit_button = st.button("Submit")
+    with st.form(key="user_input_form"):
+        user_question = st.text_input("Ask any questions about your documents:")
+        submit_button = st.form_submit_button("Submit")
 
-    if submit_button:
-        if not user_question:
-            st.error("You have not entered a question. Please enter a question.")
-        else:
-            handle_userinput(user_question)
-            user_question_placeholder = st.empty()
-            user_question_placeholder.write("")
+        if submit_button:
+            if not user_question:
+                st.error("You have not entered a question. Please enter a question.")
+            else:
+                handle_userinput(user_question)
+                st.empty()
 
         
 
