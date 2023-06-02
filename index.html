@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelector("input").addEventListener("keypress", function(e) {
+                if (e.key === "Enter") {
+                    document.querySelector('[data-baseweb="button"]').click();
+                    e.preventDefault();
+                }
+            });
+        });
+    </script>
+</head>
+<body></body>
+</html>
