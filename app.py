@@ -13,7 +13,10 @@ import tiktoken
 import docx2txt
 
 
-
+def get_docx_text(docx_file):
+    # Process the docx file and return the extracted text
+    text = docx2txt.process(docx_file)
+    return text
 
 
 
@@ -87,13 +90,30 @@ def main():  # sourcery skip: extract-method, use-named-expression
 
     st.header("PDF GURU :books:")
 
-    pdf_docs = st.file_uploader(
-            "Upload your PDFs here and click on 'Process'", accept_multiple_files=True)
-    if st.button("Process"):
-            with st.spinner("Processing"):
-                # get pdf text
-                raw_text = get_pdf_text(pdf_docs)
+    uploaded_files = st.file_uploader(
+        "Upload your PDFs and Docx files here and click on 'Process'",
+        accept_multiple_files=True
+    )
 
+    if st.button('process'):
+          with st.spinner('Processing'):
+                raw_pdf_text = ""
+                raw_docx_text = ""
+
+                for uploaded_file in uploaded_files:
+                    if uploaded_file.type == 'application/pdf':
+                        #process pdf file
+                        pdf_text = get_pdf_text([uploaded_file])
+                        raw_pdf_text += pdf_text
+                    elif uploaded_file.type == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document':
+                        #Process docx files 
+                        docx_text = get_docx_text([uploaded_file])
+                        raw_docx_text += docx_text
+
+                #Combine text from pdf and docx. files 
+                raw_text = raw_pdf_text + raw_docx_text
+                        
+                            
                 # get the text chunks
                 text_chunks = get_text_chunks(raw_text)
 
