@@ -150,18 +150,20 @@ def main():  # sourcery skip: extract-method, use-named-expression
 
     
     #Handling User Input 
-    user_question_placeholder = st.empty()
-    user_question = user_question_placeholder.text_input("Ask any questions about your documents:", value=st.session_state.get("user_question", ""))
-    submit_button = st.button("Submit")
+    with st.form(key="user_input_form"):
+        user_question_placeholder = st.empty()
+        user_question = user_question_placeholder.text_input("Ask any questions about your documents:", value=st.session_state.get("user_question", ""))
+        submit_button = st.form_submit_button("Submit")
 
-    if submit_button:
+    if submit_button or st.session_state.form_submit_button:
         if not user_question:
             st.error('You have not entered a question. Please enter a question.')
         else:
             handle_userinput(user_question)
             user_question_placeholder.text_input("Ask any questions about your documents:", value="", key="clear_input")
+            st.session_state.form_submit_button = False
 
-
+    #Sidebar structure
     with st.sidebar:
         st.sidebar.title("How to use")
         st.sidebar.write(
@@ -182,6 +184,7 @@ def main():  # sourcery skip: extract-method, use-named-expression
         st.sidebar.markdown(
             'Made by [Abdulkareem Ozovehe](https://www.linkedin.com/in/abdulkareemozovehe/)'
         )
+        st.sidebar.markdown('______')
 
         faq()
 
