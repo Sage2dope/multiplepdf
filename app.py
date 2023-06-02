@@ -14,6 +14,8 @@ import docx2txt
 
 
 def get_docx_text(docx_file):
+    if isinstance(docx_file, list):
+        docx_file = docx_file[0]
     # Process the docx file and return the extracted text
     text = docx2txt.process(docx_file)
     return text
