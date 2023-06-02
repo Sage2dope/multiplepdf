@@ -102,7 +102,7 @@ def main():  # sourcery skip: extract-method, use-named-expression
         accept_multiple_files=True
     )
 
-    if st.button('process'):
+    if st.button('Process'):
           with st.spinner('Processing'):
                 raw_pdf_text = ""
                 raw_docx_text = ""
@@ -150,13 +150,15 @@ def main():  # sourcery skip: extract-method, use-named-expression
 
     
     #Handling User Input 
-    user_question = st.text_input('Ask any questions about your documents:')
+    user_question = st.text_input('Ask any questions about your documents:', value=st.session_state.get("user_question", ""))
     submit_button = st.button('Submit')
 
     if submit_button:
-        handle_userinput(user_question)
-        user_question_placeholder = st.empty()
-        user_question_placeholder.write("")
+        if not user_question:
+            st.error('You have not entered a question. Please enter a question.')
+        else:
+            handle_userinput(user_question)
+            st.session_state.user_question = ""
 
 
     with st.sidebar:
