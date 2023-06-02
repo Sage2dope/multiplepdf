@@ -149,9 +149,15 @@ def main():  # sourcery skip: extract-method, use-named-expression
                             vectorstore)
 
     
-    user_question = st.text_input("Ask any questions about your documents:")
-    if user_question:
+    #Handling User Input 
+    with st.form(key='user_input_form'):
+       user_question = st.text_input("Ask any questions about your documents:" , key="user_input")
+       submit_button = st.form_submit_button('Submit')
+       
+    if submit_button:
         handle_userinput(user_question)
+        st.text_input("Ask any questions about your documents:", key="user_input", value="")
+
 
     with st.sidebar:
         st.sidebar.title("How to use")
