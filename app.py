@@ -96,29 +96,13 @@ def main():  # sourcery skip: extract-method, use-named-expression
     
     st.set_page_config(page_title="astodoc",
                        page_icon=":books:")
-    st.markdown(
-        """
-        <style>
-        .header {
-            background-color: #f8f9fa;
-            padding: 20px;
-            text-align: center;
-        }
-        .header h1 {
-            font-size: 36px;
-            color: #007bff;
-        }
-        </style>
-        """
-        , unsafe_allow_html=True
-    )
+    st.write(css, unsafe_allow_html=True)
 
     if "conversation" not in st.session_state:
         st.session_state.conversation = None
         st.session_state.chat_history = []
 
-    st.markdown('<div class="header"><h1>ASTODOC :books:</h1></div>', unsafe_allow_html=True)
-
+    st.header("ASTODOC :books:")
 
     uploaded_files = st.file_uploader(
         "Upload your Documents here and click on 'Process'",
