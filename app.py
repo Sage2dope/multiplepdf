@@ -96,7 +96,6 @@ def main():  # sourcery skip: extract-method, use-named-expression
 
     if "conversation" not in st.session_state:
         st.session_state.conversation = None
-    if "chat_history" not in st.session_state:
         st.session_state.chat_history = []
 
     st.header("ASTODOC :books:")
@@ -162,6 +161,9 @@ def main():  # sourcery skip: extract-method, use-named-expression
             if not user_question:
                 st.error("You have not entered a question. Please enter a question.")
             else:
+                if st.session_state.conversation is None:
+                    st.error("Conversation not initialized. Please upload documents first.")
+                    return
                 handle_userinput(user_question)
                 st.empty()
 
