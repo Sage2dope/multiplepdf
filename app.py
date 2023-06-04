@@ -86,7 +86,7 @@ def handle_userinput(user_question):
 
 def main():  # sourcery skip: extract-method, use-named-expression
     
-    st.set_page_config(page_title="ASTODOC",
+    st.set_page_config(page_title="astodoc",
                        page_icon=":books:")
     st.write(css, unsafe_allow_html=True)
 
@@ -182,7 +182,7 @@ def main():  # sourcery skip: extract-method, use-named-expression
             'This tool is a work in progress.\n' 
             'You can contribute to the project on [LinkedIn](https://www.linkedin.com/in/abdulkareemozovehe/) with your feedback and suggestions💡')
         st.sidebar.markdown(
-            'Developed by [Abdulkareem Ozovehe®] © 2023(https://www.linkedin.com/in/abdulkareemozovehe/)'
+            'Developed by [Abdulkareem Ozovehe®](https://www.linkedin.com/in/abdulkareemozovehe/)©'
         )
         st.sidebar.markdown('______')
 
