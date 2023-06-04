@@ -73,7 +73,7 @@ def get_conversation_chain(vectorstore):
 
 def handle_userinput(user_question):
     response = st.session_state.conversation({'question': user_question})
-    st.session_state.chat_history = response['chat_history']
+    st.session_state.chat_history = response['chat_history'][::-1]
 
     for i, message in enumerate(st.session_state.chat_history):
         if i % 2 == 0:
@@ -93,7 +93,7 @@ def main():  # sourcery skip: extract-method, use-named-expression
     if "conversation" not in st.session_state:
         st.session_state.conversation = None
     if "chat_history" not in st.session_state:
-        st.session_state.chat_history = None
+        st.session_state.chat_history = []
 
     st.header("ASTODOC :books:")
 
@@ -160,6 +160,17 @@ def main():  # sourcery skip: extract-method, use-named-expression
             else:
                 handle_userinput(user_question)
                 st.empty()
+    
+    #Display Input History 
+    for message in reversed(st.session_state.chat_history):
+        if message.is_user:
+            st.write(user_template.replace("{{MSG}}", message.content), unsafe_allow_html=True)
+        else:
+            st.write(bot_template.replace("{{MSG}}", message.content), unsafe_allow_html=True)
+        st.write('----')
+
+    #Clear Input History 
+    st.session_state.chat_history = []
 
         
 
