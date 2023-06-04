@@ -11,6 +11,8 @@ from langchain.llms import HuggingFaceHub
 from faq import faq
 import tiktoken
 import docx2txt
+import openai
+import os
 
 
 def get_docx_text(docx_file):
@@ -76,7 +78,7 @@ def handle_userinput(user_question):
     st.session_state.chat_history = response['chat_history'][::-1]
 
     for i, message in enumerate(st.session_state.chat_history):
-        if message.is_user:
+        if i % 2 == 0:
             st.write(user_template.replace(
                 "{{MSG}}", message.content), unsafe_allow_html=True)
         else:
@@ -163,7 +165,7 @@ def main():  # sourcery skip: extract-method, use-named-expression
     
     #Display Input History 
     for message in reversed(st.session_state.chat_history):
-        if message.is_user:
+        if message.user_question:
             st.write(user_template.replace("{{MSG}}", message.content), unsafe_allow_html=True)
         else:
             st.write(bot_template.replace("{{MSG}}", message.content), unsafe_allow_html=True)
