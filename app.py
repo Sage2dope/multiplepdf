@@ -86,7 +86,7 @@ def handle_userinput(user_question):
 
 def main():  # sourcery skip: extract-method, use-named-expression
     
-    st.set_page_config(page_title="PDF GURU",
+    st.set_page_config(page_title="ASTODOCS",
                        page_icon=":books:")
     st.write(css, unsafe_allow_html=True)
 
@@ -95,10 +95,10 @@ def main():  # sourcery skip: extract-method, use-named-expression
     if "chat_history" not in st.session_state:
         st.session_state.chat_history = None
 
-    st.header("PDF GURU :books:")
+    st.header("ASTODOCS :books:")
 
     uploaded_files = st.file_uploader(
-        "Upload your PDFs and Docx files here and click on 'Process'",
+        "Upload your Documents here and click on 'Process'",
         accept_multiple_files=True
     )
 
@@ -167,22 +167,22 @@ def main():  # sourcery skip: extract-method, use-named-expression
     with st.sidebar:
         st.sidebar.title("How to use")
         st.sidebar.write(
-            " 1. Upload a pdf file📄\n"
-            "2. Ask a question about the document💬\n"
-            "3. Get instant answers about your document\n")
+            " 1. Upload files📄\n"
+            "2. Ask a question about the documents💬\n"
+            "3. Get instant answers about your documents\n")
         
 
         #Sidebar Construction
         st.sidebar.markdown('______')
         st.sidebar.markdown('# About')
         st.sidebar.markdown(
-            'PDF GURU📜 allows you to ask questions about your documents'
+            'ASTODOCS📜 allows you to ask questions about your documents'
             'and get accurate answers with instant citations.')
         st.sidebar.markdown(
             'This tool is a work in progress.\n' 
             'You can contribute to the project on [LinkedIn](https://www.linkedin.com/in/abdulkareemozovehe/) with your feedback and suggestions💡')
         st.sidebar.markdown(
-            'Made by [Abdulkareem Ozovehe](https://www.linkedin.com/in/abdulkareemozovehe/)'
+            'Developed by [Abdulkareem Ozovehe®] © 2023(https://www.linkedin.com/in/abdulkareemozovehe/)'
         )
         st.sidebar.markdown('______')
 
