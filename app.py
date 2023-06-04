@@ -75,17 +75,15 @@ def handle_userinput(user_question):
     if "chat_history" not in st.session_state:
         st.session_state.chat_history = []
 
-    response = st.session_state.conversation({
-        'question': user_question,
-        'chat_history': st.session_state.chat_history
-    })
+    response = st.session_state.conversation({'question': user_question, 'chat_history': st.session_state.chat_history})
     st.session_state.chat_history = response['chat_history']
 
     for message in st.session_state.chat_history:
-        if message['role'] == 'system':
-            st.write(bot_template.replace("{{MSG}}", message['content']), unsafe_allow_html=True)
-        else:
+        if message['role'] == 'user':
             st.write(user_template.replace("{{MSG}}", message['content']), unsafe_allow_html=True)
+        else:
+            st.write(bot_template.replace("{{MSG}}", message['content']), unsafe_allow_html=True)
+
 
 
 def main():  # sourcery skip: extract-method, use-named-expression
