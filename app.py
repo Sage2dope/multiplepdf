@@ -86,7 +86,7 @@ def handle_userinput(user_question):
 
 def main():  # sourcery skip: extract-method, use-named-expression
     
-    st.set_page_config(page_title="ASTODOCS",
+    st.set_page_config(page_title="ASTODOC",
                        page_icon=":books:")
     st.write(css, unsafe_allow_html=True)
 
@@ -95,7 +95,7 @@ def main():  # sourcery skip: extract-method, use-named-expression
     if "chat_history" not in st.session_state:
         st.session_state.chat_history = None
 
-    st.header("ASTODOCS :books:")
+    st.header("ASTODOC :books:")
 
     uploaded_files = st.file_uploader(
         "Upload your Documents here and click on 'Process'",
@@ -176,7 +176,7 @@ def main():  # sourcery skip: extract-method, use-named-expression
         st.sidebar.markdown('______')
         st.sidebar.markdown('# About')
         st.sidebar.markdown(
-            'ASTODOCS📜 allows you to ask questions about your documents'
+            'ASTODOC📜 allows you to ask questions about your documents'
             'and get accurate answers with instant citations.')
         st.sidebar.markdown(
             'This tool is a work in progress.\n' 
