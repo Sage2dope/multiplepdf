@@ -136,8 +136,8 @@ def main():  # sourcery skip: extract-method, use-named-expression
                     )
                 else:
 
-                        
-                            
+
+
                     # get the text chunks
                     text_chunks = get_text_chunks(raw_text)
 
@@ -152,7 +152,7 @@ def main():  # sourcery skip: extract-method, use-named-expression
                         st.session_state.conversation = get_conversation_chain(
                             vectorstore)
 
-    
+
     #Handling User Input 
     with st.form(key="user_input_form"):
         user_question = st.text_input("Ask any questions about your documents:")
@@ -164,19 +164,13 @@ def main():  # sourcery skip: extract-method, use-named-expression
             else:
                 handle_userinput(user_question)
                 st.empty()
-    
-    #Display Input History 
-    for message in reversed(st.session_state.chat_history):
-        if message:
-            st.write(user_template.replace("{{MSG}}", message.content), unsafe_allow_html=True)
-        else:
-            st.write(bot_template.replace("{{MSG}}", message.content), unsafe_allow_html=True)
-        st.write('----')
 
+    #Display Input History
+    for _ in reversed(st.session_state.chat_history):
     #Clear Input History 
-    st.session_state.chat_history = []
+        st.session_state.chat_history = []
 
-        
+
 
     #Sidebar structure
     with st.sidebar:
@@ -185,7 +179,7 @@ def main():  # sourcery skip: extract-method, use-named-expression
             " 1. Upload files📄\n"
             "2. Ask a question about the documents💬\n"
             "3. Get instant answers about your documents\n")
-        
+
 
         #Sidebar Construction
         st.sidebar.markdown('______')
