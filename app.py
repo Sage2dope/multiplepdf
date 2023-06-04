@@ -113,7 +113,7 @@ def main():  # sourcery skip: extract-method, use-named-expression
         st.session_state.conversation = None
         st.session_state.chat_history = []
 
-    st.header("ASTODOC :books:")
+    st.markdown('<h1 class="header-text">ASTODOC :books:</h1>', unsafe_allow_html=True)
 
     uploaded_files = st.file_uploader(
         "Upload your Documents here and click on 'Process'",
