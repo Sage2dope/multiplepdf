@@ -167,7 +167,7 @@ def main():  # sourcery skip: extract-method, use-named-expression
     
     #Display Input History 
     for message in reversed(st.session_state.chat_history):
-        if message.user_question:
+        if message:
             st.write(user_template.replace("{{MSG}}", message.content), unsafe_allow_html=True)
         else:
             st.write(bot_template.replace("{{MSG}}", message.content), unsafe_allow_html=True)
