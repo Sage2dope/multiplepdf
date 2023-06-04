@@ -182,8 +182,9 @@ def main():  # sourcery skip: extract-method, use-named-expression
             'This tool is a work in progress.\n' 
             'You can contribute to the project on [LinkedIn](https://www.linkedin.com/in/abdulkareemozovehe/) with your feedback and suggestions💡')
         st.sidebar.markdown(
-            'Developed by [Abdulkareem Ozovehe®](https://www.linkedin.com/in/abdulkareemozovehe/)©'
+            'Developed by [Abdulkareem Ozovehe®](https://www.linkedin.com/in/abdulkareemozovehe/)'
         )
+        st.sidebar.markdown('© 2023')
         st.sidebar.markdown('______')
 
         faq()
