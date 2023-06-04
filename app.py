@@ -96,7 +96,18 @@ def main():  # sourcery skip: extract-method, use-named-expression
     
     st.set_page_config(page_title="astodoc",
                        page_icon=":books:")
-    st.write(css, unsafe_allow_html=True)
+    st.markdown(
+        """
+        <style>
+        .header {
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            /* Add any other CSS properties or effects you desire */
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
 
     if "conversation" not in st.session_state:
         st.session_state.conversation = None
