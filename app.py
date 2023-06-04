@@ -11,6 +11,7 @@ from langchain.llms import HuggingFaceHub
 from faq import faq
 import tiktoken
 import docx2txt
+import openai
 
 
 
@@ -75,17 +76,20 @@ def get_conversation_chain(vectorstore):
 
 
 def handle_userinput(user_question):
-    response = st.session_state.conversation({'question': user_question})
-    st.session_state.chat_history = response['chat_history'][::-1]
+    try:
+        response = st.session_state.conversation({'question': user_question})
+        st.session_state.chat_history = response['chat_history'][::-1]
 
-    for i, message in enumerate(st.session_state.chat_history):
-        if i % 2 == 0:
-            st.write(bot_template.replace(
-                "{{MSG}}", message.content), unsafe_allow_html=True)
-            
-        else:
-            st.write(user_template.replace(
-                "{{MSG}}", message.content), unsafe_allow_html=True)
+        for i, message in enumerate(st.session_state.chat_history):
+            if i % 2 == 0:
+                st.write(bot_template.replace(
+                    "{{MSG}}", message.content), unsafe_allow_html=True)       
+            else:
+                st.write(user_template.replace(
+                    "{{MSG}}", message.content), unsafe_allow_html=True)
+    except openai.error.InvalidRequestError as e:
+        st.error("Document is too large. Please upload a smaller document.")
+
 
 
 def main():  # sourcery skip: extract-method, use-named-expression
@@ -162,7 +166,7 @@ def main():  # sourcery skip: extract-method, use-named-expression
                 st.error("You have not entered a question. Please enter a question.")
             else:
                 if st.session_state.conversation is None:
-                    st.error("Conversation not initialized. Please upload documents first.")
+                    st.error("Conversation not initialized. Please upload and process documents first.")
                     return
                 handle_userinput(user_question)
                 st.empty()
