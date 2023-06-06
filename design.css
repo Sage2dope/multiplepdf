@@ -6,13 +6,5 @@ span.css-10trblm.e16nr0p30
     transition: width 2s, height 4s;
     border: 20px goldenrod;
     border-radius: 15px;
-}
-
-.h1 {
-  font-family: sans-serif;
-  width: 100px;
-  height: 100px;
-  background-color: red;
-  animation-name: text-flow 6s infinite;
-  animation-duration: 4s;
+    animation: text-flow 5s infinite;
 }
