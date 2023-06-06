@@ -26,9 +26,10 @@
     font-family: copperplate;
     text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
     font-size: 50px;
-    transition: width 2s cubic-bezier(0.25, 0.1, 0.25, 1), height 4s cubic-bezier(0.25, 0.1, 0.25, 1);
+    transition: width 2s ease-in-out, height 4s ease-in-out;
     border: 20px goldenrod;
     border-radius: 15px;
     animation: text-flow 5s infinite;
   }
+
   
