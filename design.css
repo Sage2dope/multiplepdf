@@ -1,4 +1,17 @@
-span.css-10trblm.e16nr0p30
+@keyframes text-flow {
+    0% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(100px);
+      font-size: 60px;
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  span.css-10trblm.e16nr0p30
 {
     font-family: copperplate;
     text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
