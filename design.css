@@ -8,7 +8,8 @@ span.css-10trblm.e16nr0p30
     border-radius: 15px;
 }
 
-.div>h1 {
+h1 {
+  font-family: sans-serif;
   width: 100px;
   height: 100px;
   background-color: red;
