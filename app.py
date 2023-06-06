@@ -121,7 +121,14 @@ def main():  # sourcery skip: extract-method, use-named-expression
                        page_icon=":books:")
     st.write(css, unsafe_allow_html=True)
 
-    navbar()
+    selected = navbar(example=EXAMPLE_NO)
+
+    if selected == "Home":
+        st.title(f"You have selected {selected}")
+    if selected == "Projects":
+        st.title(f"You have selected {selected}")
+    if selected == "Contact":
+        st.title(f"You have selected {selected}")
 
     if "conversation" not in st.session_state:
         st.session_state.conversation = None
