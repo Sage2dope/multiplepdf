@@ -94,7 +94,7 @@ def main():  # sourcery skip: extract-method, use-named-expression
         st.session_state.chat_history = []
 
     with open('design.css') as source_des:
-       st.markdown(f'<style>{source_des.read()}</style>', unsafe_allow_html= True)
+       st.title(f'<style>{source_des.read()}</style>', unsafe_allow_html= True)
 
     uploaded_files = st.file_uploader(
         "Upload your Documents here and click on 'Process'",
