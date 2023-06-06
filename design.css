@@ -1,4 +1,4 @@
-@keyframes text-flow {
+@keyframes span {
     0% {
       font-variation-settings: "wght" 900, "wdth" 100;
       filter: hue-rotate(0deg);
