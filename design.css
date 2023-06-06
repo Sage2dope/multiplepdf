@@ -1,8 +1,12 @@
 span.css-10trblm.e16nr0p30
 {
     background-color: goldenrod;
+    font-family: 'Courier New', Courier, monospace;
+    transition: width 2s, height 4s;
+    border: 20px goldenrod;
+    border-radius: 20px;
 
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
 }
 
 div.css-1fv8s86.e16nr0p34>button{
