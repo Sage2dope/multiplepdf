@@ -1,5 +1,4 @@
 import streamlit as st
-from streamlit_option_menu import option_menu
 from PyPDF2 import PdfReader
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.embeddings import OpenAIEmbeddings
@@ -10,39 +9,10 @@ from langchain.chains import ConversationalRetrievalChain
 from htmlTemplates import css, bot_template, user_template
 from langchain.llms import HuggingFaceHub
 from faq import faq
-from sidebar import sidebar
 import tiktoken
 import docx2txt
 import openai
 
-
-
-
-nav_system = 1
-
-def navbar(navsystem = 1):
-    if navsystem == 1:
-        selected = option_menu(
-                menu_title=None,  # required
-                options=["Home", "Projects", "Contact"],  # required
-                icons=["house", "book", "envelope"],  # optional
-                menu_icon="cast",  # optional
-                default_index=0,  # optional
-                orientation="horizontal",
-                styles={
-                    "container": {"padding": "0!important", "background-color": "#fafafa"},
-                    "icon": {"color": "orange", "font-size": "25px"},
-                    "nav-link": {
-                        "font-size": "25px",
-                        "text-align": "left",
-                        "margin": "0px",
-                        "--hover-color": "#eee",
-                    },
-                    "nav-link-selected": {"background-color": "green"},
-                },
-            )
-
-    return selected
 
 
 
@@ -118,19 +88,6 @@ def handle_userinput(user_question):
 
 def main():  # sourcery skip: extract-method, use-named-expression
     
-    st.set_page_config(page_title="astodoc",
-                       page_icon=":books:")
-    st.write(css, unsafe_allow_html=True)
-
-    selected = navbar(navsystem= nav_system)
-
-    if selected == "Home":
-        st.title(f"You have selected {main}")
-    if selected == "Projects":
-        st.title(f"You have selected {sidebar}")
-    if selected == "Contact":
-        st.title(f"You have selected {faq}")
-
     if "conversation" not in st.session_state:
         st.session_state.conversation = None
     if "chat_history" not in st.session_state:
