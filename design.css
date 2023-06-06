@@ -1,8 +1,4 @@
-@keyframes shrink {
-    70%, 100% {height: calc(60vh - 4rem);} 
-  }
-  
-  body {
+body {
     min-height: 100vh;
     display: flex;
   }
@@ -15,6 +11,10 @@
     animation-delay: -1.3s;
   }
   
+  @keyframes shrink {
+    70%, 100% {height: calc(60vh - 4rem);} 
+  }
+
   span.css-10trblm.e16nr0p30
 {
     font-family: copperplate;
