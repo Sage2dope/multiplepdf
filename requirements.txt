@@ -7,6 +7,7 @@ faiss-cpu==1.7.4
 pip==23.1.2
 tiktoken==0.4.0
 docx2txt ==0.8
+streamlit_option_menu==0.3.2
 # uncomment to use huggingface llms
 # huggingface-hub==0.14.1
 
