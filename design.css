@@ -1,21 +1,22 @@
 @keyframes text-flow {
-    25% {
+    0% {
       font-variation-settings: "wght" 900, "wdth" 100;
       filter: hue-rotate(0deg);
+      transform: scale(1);
     }
     50% {
-      transform: translateY(-100px);
       font-variation-settings: "wght" 400, "wdth" 100;
+      filter: hue-rotate(0deg);
+      transform: scale(1.2);
     }
-    75% {
-      transform: translateY(0%);
+    100% {
       font-variation-settings: "wght" 900, "wdth" 100;
       filter: hue-rotate(90deg);
+      transform: scale(1);
     }
   }
-
-  span.css-10trblm.e16nr0p30
-{
+  
+  span.css-10trblm.e16nr0p30 {
     font-family: copperplate;
     text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
     font-size: 50px;
@@ -23,4 +24,5 @@
     border: 20px goldenrod;
     border-radius: 15px;
     animation: text-flow 5s infinite;
-}
+  }
+  
