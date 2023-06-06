@@ -22,7 +22,7 @@
     transition: width 2s, height 4s;
     border: 20px goldenrod;
     border-radius: 15px;
-    animation: text-flow 5s infinite;
+    animation: letter 3s ease-in-out infinite alternate;
 }
 
 
