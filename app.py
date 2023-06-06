@@ -17,7 +17,7 @@ import openai
 
 
 
-EXAMPLE_NO = 1
+nav_system = 1
 
 def navbar(navsystem = 1):
     if navsystem == 1:
@@ -121,7 +121,7 @@ def main():  # sourcery skip: extract-method, use-named-expression
                        page_icon=":books:")
     st.write(css, unsafe_allow_html=True)
 
-    selected = navbar(example=EXAMPLE_NO)
+    selected = navbar(navsystem= nav_system)
 
     if selected == "Home":
         st.title(f"You have selected {selected}")
