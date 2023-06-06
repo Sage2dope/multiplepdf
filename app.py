@@ -218,3 +218,4 @@ if __name__ == '__main__':
 # Display the HTML file with the JavaScript code
 with open("index.html", "r") as file:
     st.markdown(file.read(), unsafe_allow_html=True)
+    
