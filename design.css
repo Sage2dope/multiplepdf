@@ -1,54 +1,26 @@
-span.css-10trblm.e16nr0p30
- {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 740px;
-    height: 140px;
-    transform: translate(-50%, -50%);
-  }
-  
-  .path {
-    stroke-dashoffset: 0;
-    stroke-dasharray: 100%;
-    animation: dash 4.5s linear;
-  }
-  
-  .path:nth-child(10) {
-    animation-delay: -2s;
-  }
-  .path:nth-child(9) {
-    animation-delay: -1.75s;
-  }
-  .path:nth-child(8) {
-    animation-delay: -1.5s;
-  }
-  .path:nth-child(7) {
-    animation-delay: -1.5s;
-  }
-  .path:nth-child(6) {
-    animation-delay: -1.25s;
-  }
-  .path:nth-child(5) {
-    animation-delay: -1s;
-  }
-  .path:nth-child(4) {
-    animation-delay: -0.75s;
-  }
-  .path:nth-child(3) {
-    animation-delay: -0.5s;
-  }
-  .path:nth-child(2) {
-    animation-delay: -0.25s;
-  }
-  
-  @keyframes dash {
-    0%,
+@keyframes text-flow {
+    25% {
+      font-variation-settings: "wght" 900, "wdth" 100;
+      filter: hue-rotate(0deg);
+    }
     50% {
-      stroke-dashoffset: 100%;
+      transform: translateY(-100px);
+      font-variation-settings: "wght" 400, "wdth" 100;
     }
-    to {
-      stroke-dashoffset: 0;
+    75% {
+      transform: translateY(0%);
+      font-variation-settings: "wght" 900, "wdth" 100;
+      filter: hue-rotate(90deg);
     }
   }
-  
+
+  span.css-10trblm.e16nr0p30
+{
+    font-family: copperplate;
+    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+    font-size: 50px;
+    transition: width 2s, height 4s;
+    border: 20px goldenrod;
+    border-radius: 15px;
+    animation: text-flow 5s infinite;
+}
