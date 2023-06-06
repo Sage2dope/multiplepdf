@@ -1,3 +1,45 @@
+span.css-10trblm.e16nr0p30 {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+body{
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: 'Quicksand', sans-serif;
+	font-size: 42px;
+	background: #f7f7f7;
+}
+span{
+	margin: 0 15px;
+	line-height: .7;
+	text-shadow: 0 0 2px rgba(0, 0, 0, .45);
+	animation: span 3s ease-in infinite alternate;
+}
+.main{
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+  
+  	
+	@media(max-width: 600px){ transform: scale(.65); }
+}
+.letter{
+	display: inline-flex;
+	height: 30px;
+	width: 27px;
+	/* border: 2.5px solid #FF1EAD; */
+	border: 2.35px solid black;
+	border-radius: 14px;
+	box-shadow:
+		0 0 2px rgba(0, 0, 0, .75),
+		inset 0 0 2px rgba(0, 0, 0, .45);
+
+	animation: letter 3s ease-in-out infinite alternate;
+}
 @keyframes span {
 	0%,30%{ margin: 0 15px; }
 	70%,100%{ margin: 0 5px; }
@@ -6,14 +48,6 @@
 	0%,30%{ width: 27px; }
 	70%,100%{ width: 30vw; }
 }
-  span.css-10trblm.e16nr0p30 {
-    font-family: copperplate;
-    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
-    font-size: 50px;
-    transition: width 2s ease-in-out, height 4s ease-in-out;
-    border: 20px goldenrod;
-    border-radius: 15px;
-    animation: letter 5s infinite;
-  }
+  
 
   
