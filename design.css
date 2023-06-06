@@ -13,7 +13,7 @@
     transition: width 2s ease-in-out, height 4s ease-in-out;
     border: 20px goldenrod;
     border-radius: 15px;
-    animation: span 5s infinite;
+    animation: letter 5s infinite;
   }
 
   
