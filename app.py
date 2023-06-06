@@ -102,8 +102,6 @@ def main():  # sourcery skip: extract-method, use-named-expression
         accept_multiple_files=True
     )
 
-    with open('design.css') as source_des:   
-       st.markdown(f'<style>{source_des.read()}</style>', unsafe_allow_html= True) 
     if st.button('Process'):
           with st.spinner('Processing'):
                 raw_pdf_text = ""
