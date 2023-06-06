@@ -12,7 +12,7 @@ from faq import faq
 import tiktoken
 import docx2txt
 import openai
-
+from nav import navbar
 
 
 
@@ -91,6 +91,8 @@ def main():  # sourcery skip: extract-method, use-named-expression
     st.set_page_config(page_title="astodoc",
                        page_icon=":books:")
     st.write(css, unsafe_allow_html=True)
+
+    navbar()
 
     if "conversation" not in st.session_state:
         st.session_state.conversation = None

@@ -28,14 +28,14 @@ def navbar(navsystem):
         return selected
     
 
-selected = navbar(navsystem= 1)
+    selected = navbar(navsystem= 1)
 
-if selected == "Home":
-    st.title(f"You have selected {main}")
-if selected == "Projects":
-    st.title(f"You have selected {sidebar}")
-if selected == "Contact":
-    st.title(f"You have selected {faq}")
+    if selected == "Home":
+        st.title(f"You have selected {main}")
+    if selected == "Projects":
+        st.title(f"You have selected {sidebar}")
+    if selected == "Contact":
+        st.title(f"You have selected {faq}")
 
 
 
