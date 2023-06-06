@@ -2,11 +2,10 @@ span.css-10trblm.e16nr0p30
 {
     font-family: copperplate;
     text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
-    font-size: 40px;
+    font-size: 50px;
     transition: width 2s, height 4s;
     border: 20px goldenrod;
     border-radius: 15px;
-    font-variation-settings: "wght" 400, "wdth" 100;
     animation: text-flow 6s infinite;
     transform: translateY(-100px);
 
