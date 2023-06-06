@@ -10,6 +10,7 @@ from langchain.chains import ConversationalRetrievalChain
 from htmlTemplates import css, bot_template, user_template
 from langchain.llms import HuggingFaceHub
 from faq import faq
+from sidebar import sidebar
 import tiktoken
 import docx2txt
 import openai
@@ -124,11 +125,11 @@ def main():  # sourcery skip: extract-method, use-named-expression
     selected = navbar(navsystem= nav_system)
 
     if selected == "Home":
-        st.title(f"You have selected {selected}")
+        st.title(f"You have selected {main}")
     if selected == "Projects":
-        st.title(f"You have selected {selected}")
+        st.title(f"You have selected {sidebar}")
     if selected == "Contact":
-        st.title(f"You have selected {selected}")
+        st.title(f"You have selected {faq}")
 
     if "conversation" not in st.session_state:
         st.session_state.conversation = None
