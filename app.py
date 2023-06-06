@@ -93,7 +93,8 @@ def main():  # sourcery skip: extract-method, use-named-expression
     if "chat_history" not in st.session_state:
         st.session_state.chat_history = []
 
-    st.header("ASTODOC :books:")
+    with open('design.css') as source_des:
+       st.markdown(f'<style>{source_des.read()}</style>', unsafe_allow_html= True)
 
     uploaded_files = st.file_uploader(
         "Upload your Documents here and click on 'Process'",
