@@ -1,9 +1,12 @@
-@keyframes fade-in {
+@keyframes pulse {
   0% {
-    opacity: 0;
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
   }
   100% {
-    opacity: 1;
+    transform: scale(1);
   }
 }
 
@@ -30,8 +33,8 @@ span.css-10trblm.e16nr0p30 {
   text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
   font-size: 50px;
   transition: width 2s, height 4s;
-  animation-name: word-swipe, fade-in;
-  animation-duration: 5s, 2s;
+  animation-name: pulse, word-swipe;
+  animation-duration: 2s, 5s;
   animation-timing-function: ease-in-out, ease-in-out;
   animation-iteration-count: infinite;
 }
