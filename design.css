@@ -32,5 +32,8 @@ span.css-10trblm.e16nr0p30 {
   transition: width 2s, height 4s;
   border: 20px goldenrod;
   border-radius: 15px;
-  animation: word-swipe 5s infinite, fade-in 2s ease-in-out;
+  animation-name: word-swipe, fade-in;
+  animation-duration: 5s, 2s;
+  animation-timing-function: ease-in-out, ease-in-out;
+  animation-iteration-count: infinite;
 }
