@@ -13,4 +13,4 @@ function updateText() {
 }
 
 // Update text on each animation iteration
-$('.word-swipe').on('animationiteration', updateText());
+$('span.css-10trblm.e16nr0p30').on('animationiteration', updateText());
