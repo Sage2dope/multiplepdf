@@ -7,6 +7,21 @@
   }
 }
 
+@keyframes word-swipe {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  20%, 80% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+}
+
 span.css-10trblm.e16nr0p30 {
   display: inline-block;
   white-space: nowrap;
