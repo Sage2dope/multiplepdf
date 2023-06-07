@@ -1,12 +1,12 @@
-@keyframes pulse {
+@keyframes blur {
   0% {
-    transform: scale(1);
+    filter: blur(0);
   }
   50% {
-    transform: scale(1.2);
+    filter: blur(5px);
   }
   100% {
-    transform: scale(1);
+    filter: blur(0);
   }
 }
 
@@ -33,5 +33,5 @@ span.css-10trblm.e16nr0p30 {
   text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
   font-size: 50px;
   transition: width 2s, height 4s;
-  animation: pulse 2s infinite alternate, word-swipe 5s infinite;
+  animation: blur 2s infinite alternate, word-swipe 5s infinite;
 }
