@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            document.querySelector("input").addEventListener("keypress", function(e) {
-                if (e.key === "Enter") {
-                    document.querySelector('[data-baseweb="button"]').click();
-                    e.preventDefault();
-                }
-            });
-        });
-    </script>
+  <title>Word Swipe Animation</title>
+  <link rel="stylesheet" type="text/css" href="design.css">
 </head>
-<body></body>
+<body>
+  <div class="container">
+    <span class="css-10trblm e16nr0p30">Word 1</span>
+    <span class="css-10trblm e16nr0p30">Word 2</span>
+    <span class="css-10trblm e16nr0p30">Word 3</span>
+    <!-- Add more span elements for additional words -->
+  </div>
+
+  <script src="script.js"></script>
+</body>
 </html>

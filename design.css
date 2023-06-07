@@ -28,18 +28,15 @@ span.css-10trblm.e16nr0p30 {
 }
 
 span.css-10trblm.e16nr0p30:nth-child(1) {
-  color: red;
+  animation-delay: 0s; /* No delay for the first instance */
 }
 
 span.css-10trblm.e16nr0p30:nth-child(2) {
-  color: green;
+  animation-delay: 1s; /* Delay for the second instance */
 }
 
 span.css-10trblm.e16nr0p30:nth-child(3) {
-  color: blue;
+  animation-delay: 2s; /* Delay for the third instance */
 }
 
-/* Add more nth-child styles for additional colors as needed */
-
-  
-  
+/* Add more nth-child styles with increasing animation delays for additional instances */
