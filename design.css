@@ -1,27 +1,18 @@
-@keyframes word-swipe {
-  0% {
-    opacity: 0;
-    transform: translateY(-100%);
-  }
-  20%, 80% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(100%);
-  }
+.container {
+  width: 200px; /* Adjust the container width as needed */
+  height: 50px; /* Adjust the container height as needed */
+  overflow: hidden;
 }
 
-span.css-10trblm.e16nr0p30 {
+.word {
   display: inline-block;
   white-space: nowrap;
-  overflow: hidden;
   font-family: copperplate;
   text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
   font-size: 50px;
-  transition: width 2s, height 4s;
-  border: 20px goldenrod;
-  border-radius: 15px;
-  animation: word-swipe 5s infinite;
+  transition: transform 0.5s;
+}
+
+.swipe-animation {
+  transform: translateY(-100%);
 }
