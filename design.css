@@ -1,28 +1,35 @@
-@keyframes text-flow {
+@keyframes word-swipe {
     0% {
-      font-variation-settings: "wght" 900, "wdth" 100;
-      filter: hue-rotate(0deg);
-      transform: scale(1);
+      opacity: 0;
+      transform: translateX(-100%);
     }
-    50% {
-      font-variation-settings: "wght" 400, "wdth" 100;
-      filter: hue-rotate(0deg);
-      transform: scale(1.2);
+    20%, 80% {
+      opacity: 1;
+      transform: translateX(0);
     }
     100% {
-      font-variation-settings: "wght" 900, "wdth" 100;
-      filter: hue-rotate(90deg);
-      transform: scale(1);
+      opacity: 0;
+      transform: translateX(100%);
     }
   }
   
-  span.css-10trblm.e16nr0p30 {
+  .word-swipe {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
     font-family: copperplate;
     text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
     font-size: 50px;
     transition: width 2s, height 4s;
     border: 20px goldenrod;
     border-radius: 15px;
-    animation: text-flow 5s infinite;
+    animation: word-swipe 5s infinite;
   }
+  
+  /* Example usage */
+  <div class="word-swipe">
+    <span>Word 1</span>
+    <span>Word 2</span>
+    <span>Word 3</span>
+  </div>
   
