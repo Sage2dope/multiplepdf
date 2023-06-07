@@ -1,9 +1,15 @@
-@keyframes fade-in {
+@keyframes word-shine {
   0% {
     opacity: 0;
+    transform: translateY(-100%);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0);
   }
   100% {
-    opacity: 1;
+    opacity: 0;
+    transform: translateY(100%);
   }
 }
 
@@ -32,8 +38,8 @@ span.css-10trblm.e16nr0p30 {
   transition: width 2s, height 4s;
   border: 20px goldenrod;
   border-radius: 15px;
-  animation-name: word-swipe, fade-in;
-  animation-duration: 5s, 2s;
+  animation-name: word-shine, word-swipe;
+  animation-duration: 5s, 5s;
   animation-timing-function: ease-in-out, ease-in-out;
   animation-iteration-count: infinite;
 }
