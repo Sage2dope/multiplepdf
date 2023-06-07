@@ -1,3 +1,12 @@
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 @keyframes word-swipe {
   0% {
     opacity: 0;
@@ -13,17 +22,6 @@
   }
 }
 
-@keyframes word-shine {
-  0%, 100% {
-    background: goldenrod;
-    color: white;
-  }
-  50% {
-    background: transparent;
-    color: inherit;
-  }
-}
-
 span.css-10trblm.e16nr0p30 {
   display: inline-block;
   white-space: nowrap;
@@ -32,7 +30,8 @@ span.css-10trblm.e16nr0p30 {
   text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
   font-size: 50px;
   transition: width 2s, height 4s;
-  border: 20px goldenrod;
-  border-radius: 15px;
-  animation: word-swipe 5s infinite, word-shine 2s infinite;
+  animation-name: word-swipe, fade-in;
+  animation-duration: 5s, 2s;
+  animation-timing-function: ease-in-out, ease-in-out;
+  animation-iteration-count: infinite;
 }
