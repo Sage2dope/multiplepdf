@@ -18,7 +18,7 @@ def sidebar():
             'and get accurate answers with instant citations.')
         st.sidebar.markdown(
             'This tool is a work in progress.\n' 
-            'You can contribute to the project on [LinkedIn](https://www.linkedin.com/in/abdulkareemozovehe/) with your feedback and suggestions💡')
+            'You can contribute to the project on [LinkedIn](https://www.linkedin.com/posts/abdulkareemozovehe_astodoc-documentautomation-researchresources-activity-7072214864080850944-hH2X?utm_source=share&utm_medium=member_ios) with your feedback and suggestions💡')
         st.sidebar.markdown(
             'Developed by [Abdulkareem Ozovehe®](https://www.linkedin.com/in/abdulkareemozovehe/)'
         )
