@@ -9,6 +9,7 @@ from langchain.chains import ConversationalRetrievalChain
 from htmlTemplates import css, bot_template, user_template
 from langchain.llms import HuggingFaceHub
 from sidebar import sidebar
+from button import uploaders
 import tiktoken
 import docx2txt
 import openai
@@ -16,7 +17,7 @@ import openai
 
 
 
-
+#Parse Docs. Files 
 def get_docx_text(docx_file):
     if isinstance(docx_file, list):
         docx_file = docx_file[0]
@@ -26,7 +27,7 @@ def get_docx_text(docx_file):
 
 
 
-
+#Parse Pdf Files
 def get_pdf_text(pdf_docs):
     text = ""
     for pdf in pdf_docs:
@@ -36,6 +37,8 @@ def get_pdf_text(pdf_docs):
     return text
 
 
+
+#Split Text Character 
 def get_text_chunks(text):  # sourcery skip: inline-immediately-returned-variable
     text_splitter = CharacterTextSplitter(
         separator="\n",
@@ -47,6 +50,8 @@ def get_text_chunks(text):  # sourcery skip: inline-immediately-returned-variabl
     return chunks
 
 
+
+#OpenAi Embeddings
 def get_vectorstore(text_chunks):
     # sourcery skip: inline-immediately-returned-variable
     embeddings = OpenAIEmbeddings()
@@ -60,6 +65,8 @@ def get_vectorstore(text_chunks):
         return None
 
 
+
+#Conversation Memory
 def get_conversation_chain(vectorstore):
     # sourcery skip: inline-immediately-returned-variable
     llm = ChatOpenAI()
@@ -75,6 +82,8 @@ def get_conversation_chain(vectorstore):
     return conversation_chain
 
 
+
+#Handle User_input
 def handle_userinput(user_question):
     try:
         response = st.session_state.conversation({'question': user_question})
@@ -106,56 +115,7 @@ def main():  # sourcery skip: extract-method, use-named-expression
        st.markdown(f'<style>{source_des.read()}</style>', unsafe_allow_html= True)
     st.markdown("<h1 style= 'text-align: center:'>ASTODOC📓</h1>", unsafe_allow_html=True)
 
-    uploaded_files = st.file_uploader(
-        "Upload your Documents here and click on 'Process'",
-        accept_multiple_files=True
-    )
-
-    if st.button('Process'):
-          with st.spinner('Processing'):
-                raw_pdf_text = ""
-                raw_docx_text = ""
-                unsupported_files = []
-
-
-                for uploaded_file in uploaded_files:
-                    if uploaded_file.type == 'application/pdf':
-                        #process pdf file
-                        pdf_text = get_pdf_text([uploaded_file])
-                        raw_pdf_text += pdf_text
-                    elif uploaded_file.type == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document':
-                        #Process docx files 
-                        docx_text = get_docx_text([uploaded_file])
-                        raw_docx_text += docx_text
-                    else:
-                        #Unsupported file type 
-                        unsupported_files.append(uploaded_file.name)
-
-                #Combine text from pdf and docx. files 
-                raw_text = raw_pdf_text + raw_docx_text
-
-                if unsupported_files:
-                    unsupported_files_str = ", ".join(unsupported_files)
-                    st.error(
-                        f"Sorry, the following file(s) cannot be processed: {unsupported_files_str}. Please upload another file."
-                    )
-                else:
-
-
-
-                    # get the text chunks
-                    text_chunks = get_text_chunks(raw_text)
-
-                    # create vector store
-                    vectorstore = get_vectorstore(text_chunks)
-
-                    if vectorstore is None:
-                        #Error occured during processing 
-                        return
-                    else:
-                        # create conversation chain
-                        st.session_state.conversation = get_conversation_chain(
-                            vectorstore)
+    uploaders()
 
 
     #Handling User Input 
@@ -184,7 +144,7 @@ def main():  # sourcery skip: extract-method, use-named-expression
 
 
 
-
+#TikToken for openai tokenizing
 def num_tokens_from_string(string: str, encoding_name: str) -> int:
     """Returns the number of tokens in a text string."""
     encoding = tiktoken.get_encoding(encoding_name)
