@@ -9,7 +9,7 @@ from langchain.chains import ConversationalRetrievalChain
 from htmlTemplates import css, bot_template, user_template
 from langchain.llms import HuggingFaceHub
 from sidebar import sidebar
-from button import uploaders
+import button
 import tiktoken
 import docx2txt
 import openai
@@ -115,7 +115,7 @@ def main():  # sourcery skip: extract-method, use-named-expression
        st.markdown(f'<style>{source_des.read()}</style>', unsafe_allow_html= True)
     st.markdown("<h1 style= 'text-align: center:'>ASTODOC📓</h1>", unsafe_allow_html=True)
 
-    uploaders()
+    button
 
 
     #Handling User Input 
