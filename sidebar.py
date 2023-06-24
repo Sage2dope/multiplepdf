@@ -14,8 +14,7 @@ def sidebar():
         st.sidebar.markdown('______')
         st.sidebar.markdown('# About')
         st.sidebar.markdown(
-            'ASTODOC📜 allows you to ask questions about your documents'
-            'and get accurate answers with instant citations.')
+            'ASTODOC📜 allows you to ask questions about your documents and get accurate answers with instant citations.')
         st.sidebar.markdown(
             'This tool is a work in progress.\n' 
             'You can contribute to the project on [LinkedIn](https://www.linkedin.com/posts/abdulkareemozovehe_astodoc-documentautomation-researchresources-activity-7072214864080850944-hH2X?utm_source=share&utm_medium=member_ios) with your feedback and suggestions💡')
