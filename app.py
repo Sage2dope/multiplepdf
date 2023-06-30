@@ -192,7 +192,7 @@ def main():  # sourcery skip: extract-method, use-named-expression
 
 
 
-#TikToken for openai tokenizing
+#TikToken for openai tokenizing word count
 def num_tokens_from_string(string: str, encoding_name: str) -> int:
     """Returns the number of tokens in a text string."""
     encoding = tiktoken.get_encoding(encoding_name)
