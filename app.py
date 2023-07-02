@@ -168,7 +168,7 @@ def main():  # sourcery skip: extract-method, use-named-expression
 
     #Handling User Input 
     with st.form(key="user_input_form"):
-        user_question = st.text_input("Ask any questions about your documents:")
+        user_question = st.text_area("Ask any questions about your documents:", height=5)
         submit_button = st.form_submit_button("Submit")
 
         if submit_button:
