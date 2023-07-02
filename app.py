@@ -102,7 +102,7 @@ def handle_userinput(user_question):
 
 def main():  # sourcery skip: extract-method, use-named-expression
     
-    st.set_page_config(page_title="astodoc",
+    st.set_page_config(page_title="Astodoc",
                        page_icon=":books:")
     st.write(css, unsafe_allow_html=True)
 
